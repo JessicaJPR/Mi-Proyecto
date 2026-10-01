@@ -1,0 +1,43 @@
+{% extends 'index.html' %}     
+<!-- EN LA LINEA UNO SE HEREDA EL CONTENIDO DE index.html class dos-->
+{% block title %}Bienvenido{% endblock %}
+{% block content %}
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+          <h2 class="md-5">Productos destacados</h2>
+          {% if articulos %}  
+          <!-- Por que articulos? porque ese nombre le colocamos a nuestro diccionario -->
+        
+          <!-- Tabla de productos destacados -->
+          <div class="table-responsive small">
+            <table class="table table-striped table-sm">
+              <thead>
+                <tr>
+                  <th scope="col">Codigos|</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Precio</th>
+                  <th scope="col">Stock</th>
+                  <th scope="col">Categoría</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for producto in articulos %}
+                <tr>
+                  <td>{{producto.codigo}}</td>
+                  <td>{{producto.nombre}}</td>
+                  <td>{{producto.precio}}</td>
+                  <td>{{producto.stock}}</td>
+                  <td>{{producto.categoria}}</td>
+                </tr>
+                <!-- en la variable producto puedes colocale cualquier atributo del objeto -->
+                 <!-- Aca podemos colocar una imagen u url para que se vea  -->
+                {% endfor%}
+            
+              </tbody>
+            </table>
+          </div>
+            {% else %}
+                <p class="alert alert-warning">No hay productos destacados
+            {% endif %}
+        </main>
+        {% endblock %}
